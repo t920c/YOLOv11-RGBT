@@ -47,6 +47,42 @@ python val_rgbt_dataset.py \
 
 `/path/to/data.yaml` 和 `/path/to/dataset` 請替換成使用者自己的 RGB-T 資料集路徑。
 
+## Dataset 下載
+
+本專案使用 RGB-T `all_data` 資料集，包含可見光／紅外線影像、YOLO 標註及訓練、驗證、測試清單。
+
+[從 Google Drive 下載 all_data.zip](https://drive.google.com/file/d/1sZnyuYXK_t2tg6w2grZ8FQRbeIA_1Hs1/view?usp=sharing)
+
+檔案大小約為 8.1 GB。
+
+### 解壓縮
+
+Windows：
+
+1. 下載 `all_data.zip`。
+2. 對壓縮檔按右鍵。
+3. 選擇「解壓縮全部」。
+
+Linux／WSL：
+
+```bash
+unzip all_data.zip -d all_data
+```
+
+解壓後應包含：
+
+```text
+all_data/
+├── images/
+├── labels/
+├── data.yaml
+├── train.txt
+├── val.txt
+└── test.txt
+```
+
+執行訓練或驗證前，請確認 `data.yaml` 內的資料集路徑符合目前電腦的位置。
+
 YOLOv11-based multispectral object detection framework for RGB-T data. This repository is now maintained with a dataset-first workflow: prepare a new aligned RGB/IR dataset, generate a local runtime YAML, and train or validate with YOLOv11-RGBT on the target machine.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2506.14696-b31b1b.svg)](https://arxiv.org/abs/2506.14696)
