@@ -1,5 +1,52 @@
 # YOLOv11-RGBT
 
+## 本次訓練模型
+
+本專案使用 YOLOv11-RGBT Mid-fusion，結合 RGB 可見光與 IR 紅外線影像進行四通道物件偵測。
+
+### 模型資訊
+
+- 輸入：RGB + IR
+- Channels：4
+- Image size：640
+- Epochs：100
+- mAP50：0.9147
+- mAP50-95：0.7828
+
+### 模型下載
+
+[前往 GitHub Release 下載 best.pt](https://github.com/t920c/YOLOv11-RGBT/releases/tag/model-v1)
+
+[直接下載 best.pt](https://github.com/t920c/YOLOv11-RGBT/releases/download/model-v1/best.pt)
+
+### 使用方式
+
+下載 `best.pt` 後，將它放在專案根目錄：
+
+```text
+YOLOv11-RGBT/
+├── best.pt
+├── README.md
+├── requirements.txt
+├── train_rgbt_dataset.py
+├── val_rgbt_dataset.py
+└── ultralytics/
+```
+
+驗證模型：
+
+```bash
+python val_rgbt_dataset.py \
+  --source-yaml /path/to/data.yaml \
+  --dataset-root /path/to/dataset \
+  --weights best.pt \
+  --imgsz 640 \
+  --batch 4 \
+  --device 0
+```
+
+`/path/to/data.yaml` 和 `/path/to/dataset` 請替換成使用者自己的 RGB-T 資料集路徑。
+
 YOLOv11-based multispectral object detection framework for RGB-T data. This repository is now maintained with a dataset-first workflow: prepare a new aligned RGB/IR dataset, generate a local runtime YAML, and train or validate with YOLOv11-RGBT on the target machine.
 
 [![arXiv](https://img.shields.io/badge/arXiv-2506.14696-b31b1b.svg)](https://arxiv.org/abs/2506.14696)
